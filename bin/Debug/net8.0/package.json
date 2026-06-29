@@ -1,0 +1,11 @@
+{
+  "name": "blazor-tailwind",
+  "version": "1.0.0",
+  "dependencies": {
+    "@tailwindcss/cli": "latest",
+    "tailwindcss": "latest"
+  },
+  "devDependencies": {
+    "eslint": "^10.6.0"
+  }
+}

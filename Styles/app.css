@@ -1,0 +1,53 @@
+﻿@import "tailwindcss";
+@layer base {
+    html, body {
+        @apply h-full overflow-hidden select-none touch-none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Permite scroll únicamente en las zonas de contenido, no en toda la pantalla */
+    .scrollable-content {
+        @apply overflow-y-auto scrollbar-none;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@theme {
+    /* Registramos los nuevos alias tipográficos para toda la app */
+    --font-display: "Oswald", sans-serif;
+    --font-sans: "Inter", sans-serif;
+    /* Registramos la animación de 2 segundos y su comportamiento */
+    --animate-fade-up: fadeUp 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    --animate-slide-up-slow: slideUpSlow 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+    @keyframes slideUpSlow {
+        from {
+            opacity: 0;
+            transform: translateY(100%); /* Comienza completamente oculta abajo del todo */
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0); /* Se detiene de forma matemática exacta en su lugar */
+        }
+    }
+}
+
+/* Elimina el anillo de enfoque gris/blanco por defecto del navegador en elementos de texto */
+h1:focus, h2:focus, h3:focus, p:focus, div:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+

@@ -1,0 +1,66 @@
+﻿@page "/"
+<!--Usamos un layout sin barra inferior si no quieres mostrarla aquí-->
+@layout NoMenuLayout
+@inject NavigationManager Navigation
+
+<div class="relative h-screen w-full bg-slate-950 overflow-hidden flex flex-col justify-end p-6 select-none">
+    
+    <!-- Imagen de fondo difuminada y oscurecida (Parámetros estéticos idénticos) -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+        <!-- 1. Imagen base: Se duplicó la visibilidad (opacity-55) y se subió el brillo -->
+        <img src="images/background-gym.jpg" class="absolute inset-0 w-full h-full object-cover opacity-55 blur-[0.5px] brightness-110 contrast-100" alt="Gym Background" />
+
+        <!-- 2. Filtro Verde Oliva Dorado: Más suave y luminoso -->
+        <div class="absolute inset-0" style="background-color: #8a8a15; mix-blend-mode: multiply; opacity: 0.45;"></div>
+
+        <!-- 3. Gradiente suavizado: Deja pasar la luz en el centro y arriba, oscurece sutilmente la base -->
+        <div class="absolute inset-0" style="background-image: linear-gradient(to bottom, rgba(2, 6, 23, 0.1) 0%, rgba(2, 6, 23, 0.3) 50%, rgba(2, 6, 23, 0.75) 100%);"></div>
+    </div>
+
+    <!-- Contenedor Animado (Z-10 para posicionarse sobre el fondo) -->
+    <div class="relative z-10 w-full max-w-md mx-auto flex flex-col gap-6 animate-fade-up">
+        
+        <!-- Logotipo Oficial -->
+        <div class="w-24 h-24 mb-2">
+            <img src="images/logo-bodybuilders.png" class="w-full h-full object-contain" alt="Logo" />
+        </div>
+
+        <!-- Textos Principales (Tipografía condensed de alto impacto) -->
+        <div class="flex flex-col gap-2">
+            <h1 class="text-4xl font-black tracking-tight text-white uppercase leading-none font-sans">
+                Alcanza tu<br />
+                mejor versión<br />
+                <span class="text-amber-500">hoy mismo.</span>
+            </h1>
+            <p class="text-sm font-normal text-slate-300 leading-relaxed max-w-[90%]">
+                Accede a entrenamientos <span class="text-amber-500 font-semibold">100% personalizados</span> creados por expertos que siguen tu progreso día a día.
+            </p>
+        </div>
+
+        <!-- Botonera Interactiva Estilo Nativo Móvil -->
+        <div class="flex flex-col gap-3 mt-4 w-full">
+            <button @onclick="IrAlRegistro" class="w-full h-14 bg-amber-500 hover:bg-amber-600 active:scale-[0.98] transition-all duration-150 text-slate-950 font-black text-sm tracking-wider uppercase rounded-full shadow-lg shadow-amber-500/20 flex items-center justify-center cursor-pointer">
+                Empezar Ahora
+            </button>
+            
+            <button  @onclick="IrAlIniciar" class="w-full h-14 bg-transparent hover:bg-white/5 active:scale-[0.98] transition-all duration-150 text-white font-bold text-sm tracking-wider uppercase rounded-full border-2 border-white flex items-center justify-center cursor-pointer">
+                Iniciar Sesión
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private void IrAlRegistro()
+    {
+        // Redirige hacia la pantalla de creación de cuenta
+        Navigation.NavigateTo("/register",forceLoad:true);
+    }
+
+    
+     private void IrAlIniciar()
+    {
+        // Redirige hacia la pantalla de creación de cuenta
+        Navigation.NavigateTo("/iniciar");
+    }
+}
